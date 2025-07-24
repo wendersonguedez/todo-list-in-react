@@ -1,7 +1,7 @@
 export default function App() {
 	return (
 		<>
-			<p className="text-red-500">Hello, World!</p>
+			<p className="text-pink-dark">Hello, World!</p>
 		</>
 	);
 }
