@@ -8,47 +8,50 @@ import ButtonIcon from "./components/button-icon";
 import InputText from "./components/input-text";
 import InputCheckbox from "./components/input-checkbox";
 import Card from "./components/card";
+import Container from "./components/container";
 
 export default function App() {
 	return (
-		<div className="grid gap-11">
-			<Text variant={"body-md"} className="text-pink-base">
-				Hello, World!
-			</Text>
+		<Container>
+			<div className="grid gap-11">
+				<Text variant={"body-md"} className="text-pink-base">
+					Hello, World!
+				</Text>
 
-			<div className="flex gap-1">
-				<Icon svg={TrashIcon} />
-				<Icon svg={SpinnerIcon} animate />
-			</div>
+				<div className="flex gap-1">
+					<Icon svg={TrashIcon} />
+					<Icon svg={SpinnerIcon} animate />
+				</div>
 
-			<div>
-				<Badge variant={"secondary"} className="pl-2">
-					5
-				</Badge>
-				<Badge>2 de 5</Badge>
-			</div>
+				<div>
+					<Badge variant={"secondary"} className="pl-2">
+						5
+					</Badge>
+					<Badge>2 de 5</Badge>
+				</div>
 
-			<div>
-				<Button icon={TrashIcon}>Wend</Button>
-			</div>
+				<div>
+					<Button icon={TrashIcon}>Wend</Button>
+				</div>
 
-			<div className="flex gap-1">
-				<ButtonIcon icon={TrashIcon}></ButtonIcon>
-				<ButtonIcon icon={TrashIcon} variant={"secondary"}></ButtonIcon>
-				<ButtonIcon icon={TrashIcon} variant={"tertiary"}></ButtonIcon>
-			</div>
+				<div className="flex gap-1">
+					<ButtonIcon icon={TrashIcon}></ButtonIcon>
+					<ButtonIcon icon={TrashIcon} variant={"secondary"}></ButtonIcon>
+					<ButtonIcon icon={TrashIcon} variant={"tertiary"}></ButtonIcon>
+				</div>
 
-			<div>
-				<InputText />
-			</div>
+				<div>
+					<InputText />
+				</div>
 
-			<div>
-				<InputCheckbox />
-			</div>
+				<div>
+					<InputCheckbox />
+				</div>
 
-			<div>
-				<Card size={"md"}>Olá mundo!</Card>
+				<div>
+					<Card size={"md"}>Olá mundo!</Card>
+				</div>
 			</div>
-		</div>
+		</Container>
 	);
 }
