@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import PageComponents from "./pages/page-components";
+import PageComponents from "./pages/components";
 import LayoutMain from "./pages/layout-main";
-import PageHome from "./pages/page-home";
+import PageHome from "./pages/home";
 
 export default function App() {
 	return (
