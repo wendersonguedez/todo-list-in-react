@@ -12,6 +12,7 @@ import CheckIcon from "../assets/icons/check.svg?react";
 import InputText from "../components/input-text";
 import { type Task, TaskState } from "../models/task";
 import { cx } from "class-variance-authority";
+import useTask from "../hooks/use-task";
 
 interface TaskItemProps {
 	task: Task;
@@ -21,8 +22,8 @@ export default function TaskItem({ task }: TaskItemProps) {
 	const [isEditing, setIsEditing] = React.useState(
 		task.state === TaskState.Creating
 	);
-
-	const [taskTitle, setTaskTile] = React.useState("");
+	const [taskTitle, setTaskTile] = React.useState(task.title || "");
+	const { updateTask } = useTask();
 
 	function handleChangeTaskTitle(event: React.ChangeEvent<HTMLInputElement>) {
 		setTaskTile(event.target.value || "");
@@ -31,8 +32,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 	function handleSaveTask(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 
-		console.log({ id: task.id, title: taskTitle });
-		// TODO: chamada para função de atualizar
+		updateTask(task.id, { title: taskTitle });
 
 		setIsEditing(false);
 	}
@@ -72,6 +72,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 						onChange={handleChangeTaskTitle}
 						required
 						autoFocus
+						value={taskTitle}
 					/>
 					<div className="flex gap-1">
 						<ButtonIcon
