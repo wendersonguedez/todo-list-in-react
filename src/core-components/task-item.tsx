@@ -23,7 +23,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 		task.state === TaskState.Creating
 	);
 	const [taskTitle, setTaskTile] = React.useState(task.title || "");
-	const { updateTask } = useTask();
+	const { updateTask, updateTaskStatus } = useTask();
 
 	function handleChangeTaskTitle(event: React.ChangeEvent<HTMLInputElement>) {
 		setTaskTile(event.target.value || "");
@@ -37,13 +37,19 @@ export default function TaskItem({ task }: TaskItemProps) {
 		setIsEditing(false);
 	}
 
+	function handleChangeTaskStatus(event: React.ChangeEvent<HTMLInputElement>) {
+		const checked = event.target.checked;
+
+		updateTaskStatus(task.id, checked);
+	}
+
 	return (
 		<Card size={"md"}>
 			{!isEditing ? (
 				<div className="flex items-center gap-4">
 					<InputCheckbox
 						checked={task?.concluded}
-						value={task?.concluded?.toString()}
+						onChange={handleChangeTaskStatus}
 					/>
 					<Text
 						className={cx("flex-1", {
